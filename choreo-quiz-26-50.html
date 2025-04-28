@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WSO2 Choreo Quiz (26-50)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .quiz-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .timer {
+            background: #ff4444;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-size: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .question {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f9f9f9;
+        }
+        .options {
+            margin-left: 20px;
+        }
+        .option {
+            margin: 10px 0;
+        }
+        .pagination {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px 15px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #45a049;
+        }
+        button:disabled {
+            background: #cccccc;
+            cursor: not-allowed;
+        }
+        .page-indicator {
+            text-align: center;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+        .submit-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        #submit-btn {
+            background: #2196F3;
+            padding: 15px 30px;
+            font-size: 18px;
+        }
+        #submit-btn:hover {
+            background: #0b7dda;
+        }
+        .results {
+            display: none;
+            margin-top: 30px;
+            padding: 20px;
+            background: #e8f5e9;
+            border-radius: 5px;
+        }
+        .category-score {
+            margin: 10px 0;
+            padding: 10px;
+            background: #ffffff;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>WSO2 Choreo Quiz (26-50)</h1>
+        <div class="timer" id="timer">Time remaining: 30:00</div>
+        
+        <div id="quiz-content">
+            <!-- Questions will be loaded here -->
+        </div>
+        
+        <div class="pagination">
+            <button id="prev-btn" disabled>Previous</button>
+            <div class="page-indicator">Page <span id="current-page">1</span> of <span id="total-pages">4</span></div>
+            <button id="next-btn">Next</button>
+        </div>
+        
+        <div class="submit-container">
+            <button id="submit-btn">Submit Quiz</button>
+        </div>
+        
+        <div class="results" id="results">
+            <h2>Quiz Results</h2>
+            <div id="score-display"></div>
+            <div id="category-breakdown"></div>
+        </div>
+    </div>
+
+    <script>
+        // Quiz questions data (100 questions)
+        const questions = [
+           // Page 2 (26-50)
+            {
+                question: "What is the default build system used in Choreo?",
+                options: [
+                    "Maven",
+                    "Gradle",
+                    "Ballerina Build",
+                    "Make"
+                ],
+                answer: "Ballerina Build",
+                category: "Development"
+            },
+            {
+                question: "Which protocol is NOT natively supported by Choreo?",
+                options: [
+                    "HTTP",
+                    "gRPC",
+                    "WebSockets",
+                    "SMTP"
+                ],
+                answer: "SMTP",
+                category: "Integration"
+            },
+            {
+                question: "What is Choreo's recommended approach for configuration management?",
+                options: [
+                    "Environment variables",
+                    "Hardcoded values",
+                    "External configuration files",
+                    "Database storage"
+                ],
+                answer: "Environment variables",
+                category: "DevOps"
+            },
+            {
+                question: "Which of these is a Choreo deployment stage?",
+                options: [
+                    "Development",
+                    "Staging",
+                    "Production",
+                    "All of the above"
+                ],
+                answer: "All of the above",
+                category: "Deployment"
+            },
+            {
+                question: "How does Choreo handle API versioning?",
+                options: [
+                    "Through URL paths",
+                    "Through headers",
+                    "Through query parameters",
+                    "All of the above"
+                ],
+                answer: "All of the above",
+                category: "API Management"
+            },
+            {
+                question: "What is the purpose of Choreo's 'Cellery' integration?",
+                options: [
+                    "For Kubernetes deployment",
+                    "For microservice composition",
+                    "For API management",
+                    "For database migration"
+                ],
+                answer: "For microservice composition",
+                category: "Architecture"
+            },
+            {
+                question: "Which of these is NOT a Choreo observability feature?",
+                options: [
+                    "Distributed tracing",
+                    "CPU monitoring",
+                    "Network packet inspection",
+                    "Log aggregation"
+                ],
+                answer: "Network packet inspection",
+                category: "Observability"
+            },
+            {
+                question: "What is the primary language for writing Choreo connectors?",
+                options: [
+                    "Java",
+                    "Ballerina",
+                    "Python",
+                    "Go"
+                ],
+                answer: "Ballerina",
+                category: "Development"
+            },
+            {
+                question: "How does Choreo handle blue-green deployments?",
+                options: [
+                    "Manual configuration required",
+                    "Built-in support",
+                    "Not supported",
+                    "Only through third-party tools"
+                ],
+                answer: "Built-in support",
+                category: "DevOps"
+            },
+            {
+                question: "Which of these databases has built-in Choreo connectors?",
+                options: [
+                    "MySQL",
+                    "MongoDB",
+                    "PostgreSQL",
+                    "All of the above"
+                ],
+                answer: "All of the above",
+                category: "Integration"
+            },
+            {
+                question: "What is the maximum timeout for a Choreo API call?",
+                options: [
+                    "30 seconds",
+                    "1 minute",
+                    "5 minutes",
+                    "Configurable up to 10 minutes"
+                ],
+                answer: "Configurable up to 10 minutes",
+                category: "API Management"
+            },
+            {
+                question: "Which authentication protocol is NOT supported by Choreo?",
+                options: [
+                    "OAuth 2.0",
+                    "SAML",
+                    "OpenID Connect",
+                    "Kerberos"
+                ],
+                answer: "Kerberos",
+                category: "Security"
+            },
+            {
+                question: "What is the purpose of Choreo's 'Cell' concept?",
+                options: [
+                    "A deployment unit",
+                    "A security boundary",
+                    "A billing unit",
+                    "A team organization"
+                ],
+                answer: "A deployment unit",
+                category: "Architecture"
+            },
+            {
+                question: "Which of these is NOT a Choreo subscription plan?",
+                options: [
+                    "Free",
+                    "Professional",
+                    "Enterprise",
+                    "Ultimate"
+                ],
+                answer: "Ultimate",
+                category: "Fundamentals"
+            },
+            {
+                question: "How does Choreo handle database migrations?",
+                options: [
+                    "Manual scripts only",
+                    "Built-in migration tools",
+                    "Third-party integrations",
+                    "No migration support"
+                ],
+                answer: "Built-in migration tools",
+                category: "DevOps"
+            },
+            {
+                question: "What is the purpose of Choreo's 'Dependency Viewer'?",
+                options: [
+                    "To visualize service dependencies",
+                    "To manage npm packages",
+                    "To track team dependencies",
+                    "To monitor cloud costs"
+                ],
+                answer: "To visualize service dependencies",
+                category: "Observability"
+            },
+            {
+                question: "Which of these is a Choreo API policy type?",
+                options: [
+                    "Rate limiting",
+                    "IP filtering",
+                    "JWT validation",
+                    "All of the above"
+                ],
+                answer: "All of the above",
+                category: "API Management"
+            },
+            {
+                question: "What is the minimum number of replicas Choreo maintains for a service?",
+                options: [
+                    "1",
+                    "2",
+                    "3",
+                    "Configurable"
+                ],
+                answer: "2",
+                category: "Operations"
+            },
+            {
+                question: "Which of these is NOT a Choreo integration pattern?",
+                options: [
+                    "Request-reply",
+                    "Publish-subscribe",
+                    "Batch processing",
+                    "Peer-to-peer"
+                ],
+                answer: "Peer-to-peer",
+                category: "Integration"
+            },
+            {
+                question: "How does Choreo handle service-to-service authentication?",
+                options: [
+                    "mTLS",
+                    "JWT",
+                    "OAuth 2.0",
+                    "All of the above"
+                ],
+                answer: "All of the above",
+                category: "Security"
+            },
+            {
+                question: "What is the purpose of Choreo's 'Service Mesh'?",
+                options: [
+                    "To manage network traffic between services",
+                    "To provide API gateway functionality",
+                    "To handle database connections",
+                    "To manage UI components"
+                ],
+                answer: "To manage network traffic between services",
+                category: "Architecture"
+            },
+            {
+                question: "Which of these is a Choreo deployment strategy?",
+                options: [
+                    "Rolling update",
+                    "Recreate",
+                    "Canary",
+                    "All of the above"
+                ],
+                answer: "All of the above",
+                category: "DevOps"
+            },
+            {
+                question: "What is the purpose of Choreo's 'API Gateway'?",
+                options: [
+                    "To expose services as APIs",
+                    "To manage API traffic",
+                    "To apply API policies",
+                    "All of the above"
+                ],
+                answer: "All of the above",
+                category: "API Management"
+            },
+            {
+                question: "Which of these is NOT a Choreo observability metric?",
+                options: [
+                    "Latency",
+                    "Error rate",
+                    "Throughput",
+                    "Disk rotation speed"
+                ],
+                answer: "Disk rotation speed",
+                category: "Observability"
+            }
+        ];
+
+        // Quiz state variables
+        let currentPage = 1;
+        const questionsPerPage = 25;
+        const totalPages = Math.ceil(questions.length / questionsPerPage);
+        let userAnswers = Array(questions.length).fill(null);
+        let timeLeft = 30 * 60; // 30 minutes in seconds
+        let timerInterval;
+
+        // DOM elements
+        const quizContent = document.getElementById('quiz-content');
+        const currentPageSpan = document.getElementById('current-page');
+        const totalPagesSpan = document.getElementById('total-pages');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const submitBtn = document.getElementById('submit-btn');
+        const timerElement = document.getElementById('timer');
+        const resultsDiv = document.getElementById('results');
+        const scoreDisplay = document.getElementById('score-display');
+        const categoryBreakdown = document.getElementById('category-breakdown');
+
+        // Initialize the quiz
+        function initQuiz() {
+            totalPagesSpan.textContent = totalPages;
+            renderQuestions();
+            startTimer();
+        }
+
+        // Render questions for the current page
+        function renderQuestions() {
+            currentPageSpan.textContent = currentPage;
+            quizContent.innerHTML = '';
+            
+            const startIndex = (currentPage - 1) * questionsPerPage;
+            const endIndex = Math.min(startIndex + questionsPerPage, questions.length);
+            
+            for (let i = startIndex; i < endIndex; i++) {
+                const question = questions[i];
+                const questionDiv = document.createElement('div');
+                questionDiv.className = 'question';
+                questionDiv.innerHTML = `
+                    <h3>Question ${i + 1}: ${question.question}</h3>
+                    <div class="options">
+                        ${question.options.map((option, optIndex) => `
+                            <div class="option">
+                                <input type="radio" id="q${i}_opt${optIndex}" name="q${i}" value="${option}" 
+                                    ${userAnswers[i] === option ? 'checked' : ''}>
+                                <label for="q${i}_opt${optIndex}">${option}</label>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+                quizContent.appendChild(questionDiv);
+                
+                // Add event listeners to radio buttons
+                questionDiv.querySelectorAll('input[type="radio"]').forEach(radio => {
+                    radio.addEventListener('change', (e) => {
+                        userAnswers[i] = e.target.value;
+                    });
+                });
+            }
+            
+            // Update pagination buttons
+            prevBtn.disabled = currentPage === 1;
+            nextBtn.disabled = currentPage === totalPages;
+        }
+
+        // Timer functions
+        function startTimer() {
+            updateTimerDisplay();
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                updateTimerDisplay();
+                
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    submitQuiz();
+                }
+            }, 1000);
+        }
+
+        function updateTimerDisplay() {
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            timerElement.textContent = `Time remaining: ${minutes}:${seconds.toString().padStart(2, '0')}`;
+            
+            if (timeLeft <= 300) { // 5 minutes or less
+                timerElement.style.backgroundColor = '#ff0000';
+            }
+        }
+
+        // Pagination
+        prevBtn.addEventListener('click', () => {
+            if (currentPage > 1) {
+                currentPage--;
+                renderQuestions();
+            }
+        });
+
+        nextBtn.addEventListener('click', () => {
+            if (currentPage < totalPages) {
+                currentPage++;
+                renderQuestions();
+            }
+        });
+
+        // Quiz submission
+        submitBtn.addEventListener('click', () => {
+            if (confirm('Are you sure you want to submit your quiz?')) {
+                submitQuiz();
+            }
+        });
+
+        function submitQuiz() {
+            clearInterval(timerInterval);
+            
+            // Calculate score
+            let correct = 0;
+            const categoryStats = {};
+            
+            questions.forEach((question, index) => {
+                if (userAnswers[index] === question.answer) {
+                    correct++;
+                    
+                    // Update category stats
+                    if (!categoryStats[question.category]) {
+                        categoryStats[question.category] = { correct: 0, total: 0 };
+                    }
+                    categoryStats[question.category].correct++;
+                }
+                
+                // Count total questions per category
+                if (question.category) {
+                    if (!categoryStats[question.category]) {
+                        categoryStats[question.category] = { correct: 0, total: 0 };
+                    }
+                    categoryStats[question.category].total++;
+                }
+            });
+            
+            const score = Math.round((correct / questions.length) * 100);
+            
+            // Display results
+            scoreDisplay.innerHTML = `
+                <h3>Your Score: ${score}% (${correct} out of ${questions.length})</h3>
+            `;
+            
+            // Display category breakdown
+            let categoryHTML = '<h3>Category Breakdown:</h3>';
+            for (const [category, stats] of Object.entries(categoryStats)) {
+                const categoryScore = stats.total > 0 ? Math.round((stats.correct / stats.total) * 100) : 0;
+                categoryHTML += `
+                    <div class="category-score">
+                        <strong>${category}:</strong> ${categoryScore}% (${stats.correct} out of ${stats.total})
+                        <progress value="${stats.correct}" max="${stats.total}"></progress>
+                    </div>
+                `;
+            }
+            categoryBreakdown.innerHTML = categoryHTML;
+            
+            // Hide quiz and show results
+            document.querySelector('.pagination').style.display = 'none';
+            submitBtn.style.display = 'none';
+            resultsDiv.style.display = 'block';
+            
+            // Scroll to results
+            resultsDiv.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Initialize the quiz when the page loads
+        window.addEventListener('load', initQuiz);
+    </script>
+</body>
+</html>
