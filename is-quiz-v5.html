@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WSO2 Identity Server Developer Exam v5 - MCQ Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        h1 {
+            color: #FF7300;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .quiz-container {
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .question {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        .question:last-child {
+            border-bottom: none;
+        }
+        .question-text {
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        .options {
+            margin-left: 20px;
+        }
+        .option {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #f5f5f5;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .option:hover {
+            background-color: #e9e9e9;
+        }
+        .option.correct {
+            background-color: #d4edda;
+            color: #155724;
+            font-weight: bold;
+        }
+        .option.incorrect {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        .explanation {
+            margin-top: 15px;
+            padding: 10px;
+            background-color: #e7f1ff;
+            border-left: 4px solid #007bff;
+            display: none;
+        }
+        .show-answer {
+            background-color: #FF7300;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+        .show-answer:hover {
+            background-color: #e65c00;
+        }
+        .category {
+            color: #0071b8;
+            font-weight: bold;
+            margin: 30px 0 15px 0;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <h1>WSO2 Identity Server Developer Exam v5</h1>
+    <div class="quiz-container">
+
+        <div class="category">Authentication & Authorization</div>
+
+        <div class="question">
+            <div class="question-text">1. Which protocol is primarily used for API security in WSO2 Identity Server?</div>
+            <div class="options">
+                <div class="option correct">A. OAuth 2.0</div>
+                <div class="option">B. SAML 1.1</div>
+                <div class="option">C. LDAP</div>
+                <div class="option">D. WS-Trust</div>
+            </div>
+            <button class="show-answer" onclick="toggleExplanation(this)">Show Explanation</button>
+            <div class="explanation">
+                OAuth 2.0 is the standard protocol used for API security in WSO2 Identity Server, providing token-based authorization for APIs.
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="question-text">2. What is the purpose of the 'scope' parameter in OAuth 2.0?</div>
+            <div class="options">
+                <div class="option">A. To specify token expiration time</div>
+                <div class="option correct">B. To limit application access to specific resources</div>
+                <div class="option">C. To define encryption algorithm</div>
+                <div class="option">D. To identify the user</div>
+            </div>
+            <button class="show-answer" onclick="toggleExplanation(this)">Show Explanation</button>
+            <div class="explanation">
+                The scope parameter defines the specific permissions being requested by the client application, limiting access to certain resources or actions.
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="question-text">3. Which component in WSO2 IS is responsible for validating access tokens?</div>
+            <div class="options">
+                <div class="option correct">A. Key Manager</div>
+                <div class="option">B. User Store</div>
+                <div class="option">C. Identity Provider</div>
+                <div class="option">D. Entitlement Server</div>
+            </div>
+            <button class="show-answer" onclick="toggleExplanation(this)">Show Explanation</button>
+            <div class="explanation">
+                The Key Manager component in WSO2 IS handles OAuth operations including token validation, issuance, and management.
+            </div>
+        </div>
+
+        <div class="category">Identity Federation</div>
+
+        <div class="question">
+            <div class="question-text">4. What is the primary purpose of SAML 2.0 in WSO2 IS?</div>
+            <div class="options">
+                <div class="option">A. User provisioning</div>
+                <div class="option correct">B. Web-based single sign-on</div>
+                <div class="option">C. Password policy enforcement</div>
+                <div class="option">D. API security</div>
+            </div>
+            <button class="show-answer" onclick="toggleExplanation(this)">Show Explanation</button>
+            <div class="explanation">
+                SAML 2.0 is primarily used for web-based single sign-on (SSO) between different security domains or organizations.
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="question-text">5. What must be exchanged between Identity Provider and Service Provider before configuring SAML SSO?</div>
+            <div class="options">
+                <div class="option">A. User credentials</div>
+                <div class="option correct">B. Metadata files</div>
+                <div class="option">C. SSL certificates</div>
+                <div class="option">D. Access tokens</div>
+            </div>
+            <button class="show-answer" onclick="toggleExplanation(this)">Show Explanation</button>
+            <div class="explanation">
+                SAML metadata files containing configuration details must be exchanged between IdP and SP before setting up SSO.
+            </div>
+        </div>
+
+        <div class="category">User Management</div>
+
+        <div class="question">
+            <div class="question-text">6. Which protocol is used for user provisioning in WSO2 IS?</div>
+            <div class="options">
+                <div class="option">A. OAuth 2.0</div>
+                <div class="option correct">B. SCIM</div>
+                <div class="option">C. XACML</div>
+                <div class="option">D. SAML</div>
+            </div>
+            <button class="show-answer" onclick="toggleExplanation(this)">Show Explanation</button>
+            <div class="explanation">
+                SCIM (System for Cross-domain Identity Management) is the standard protocol used for user provisioning operations.
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="question-text">7. Where would you configure password policies in WSO2 IS?</div>
+            <div class="options">
+                <div class="option correct">A. Identity → Claims → List</div>
+                <div class="option">B. Identity → Service Providers</div>
+                <div class="option">C. Identity → Identity Providers</div>
+                <div class="option">D. Identity → Roles</div>
+            </div>
+            <button class="show-answer" onclick="toggleExplanation(this)">Show Explanation</button>
+            <div class="explanation">
+                Password policies are configured under Identity → Claims → List by modifying password-related claims in the http://wso2.org/claims dialect.
+            </div>
+        </div>
+
+        <div class="category">Adaptive Authentication</div>
+
+        <div class="question">
+            <div class="question-text">8. What scripting language is used for adaptive authentication scripts in WSO2 IS?</div>
+            <div class="options">
+                <div class="option correct">A. JavaScript</div>
+                <div class="option">B. Python</div>
+                <div class="option">C. Groovy</div>
+                <div class="option">D. Ruby</div>
+            </div>
+            <button class="show-answer" onclick="toggleExplanation(this)">Show Explanation</button>
+            <div class="explanation">
+                WSO2 IS uses JavaScript for writing adaptive authentication scripts that execute during the authentication flow.
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="question-text">9. Which of these is NOT a standard authentication step option in adaptive auth?</div>
+            <div class="options">
+                <div class="option">A. Basic</div>
+                <div class="option">B. FIDO</div>
+                <div class="option correct">C. Kerberos</div>
+                <div class="option">D. SMS OTP</div>
+            </div>
+            <button class="show-answer" onclick="toggleExplanation(this)">Show Explanation</button>
+            <div class="explanation">
+                Kerberos is not available as a standard authentication step option in WSO2 IS adaptive authentication configurations.
+            </div>
+        </div>
+
+        <!-- Continue with more questions following the same pattern -->
+
+        <div class="category">API Security</div>
+
+        <div class="question">
+            <div class="question-text">10. What is the purpose of the 'aud' claim in a JWT access token?</div>
+            <div class="options">
+                <div class="option">A. Identifies the token issuer</div>
+                <div class="option correct">B. Specifies the intended recipient</div>
+                <div class="option">C. Contains user attributes</div>
+                <div class="option">D. Defines token expiration</div>
+            </div>
+            <button class="show-answer" onclick="toggleExplanation(this)">Show Explanation</button>
+            <div class="explanation">
+                The 'aud' (audience) claim identifies the intended recipients of the token - the services that should accept the token.
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="question-text">11. Which grant type is most secure for server-side web applications?</div>
+            <div class="options">
+                <div class="option correct">A. Authorization Code</div>
+                <div class="option">B. Implicit</div>
+                <div class="option">C. Password</div>
+                <div class="option">D. Client Credentials</div>
+            </div>
+            <button class="show-answer" onclick="toggleExplanation(this)">Show Explanation</button>
+            <div class="explanation">
+                The Authorization Code grant is most secure for server-side apps as tokens are never exposed to the user agent/browser.
+            </div>
+        </div>
+
+        <div class="category">Configuration & Deployment</div>
+
+        <div class="question">
+            <div class="question-text">12. Which file is the primary configuration file in WSO2 IS v5?</div>
+            <div class="options">
+                <div class="option correct">A. deployment.toml</div>
+                <div class="option">B. carbon.xml</div>
+                <div class="option">C. axis2.xml</div>
+                <div class="option">D. user-mgt.xml</div>
+            </div>
+            <button class="show-answer" onclick="toggleExplanation(this)">Show Explanation</button>
+            <div class="explanation">
+                deployment.toml is the main configuration file in WSO2 IS v5, replacing multiple XML files from previous versions.
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="question-text">13. Where are custom authenticators deployed in WSO2 IS?</div>
+            <div class="options">
+                <div class="option">A. repository/components/lib</div>
+                <div class="option correct">B. repository/components/dropins</div>
+                <div class="option">C. repository/components/plugins</div>
+                <div class="option">D. repository/components/extensions</div>
+            </div>
+            <button class="show-answer" onclick="toggleExplanation(this)">Show Explanation</button>
+            <div class="explanation">
+                Custom authenticators should be deployed as OSGi bundles in the repository/components/dropins directory.
+            </div>
+        </div>
+
+        <div class="category">Troubleshooting</div>
+
+        <div class="question">
+            <div class="question-text">14. Which log file contains authentication-related events?</div>
+            <div class="options">
+                <div class="option">A. wso2carbon.log</div>
+                <div class="option correct">B. audit.log</div>
+                <div class="option">C. http_access.log</div>
+                <div class="option">D. trace.log</div>
+            </div>
+            <button class="show-answer" onclick="toggleExplanation(this)">Show Explanation</button>
+            <div class="explanation">
+                audit.log contains authentication and authorization related events, useful for troubleshooting login issues.
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="question-text">15. What command would you use to check the status of WSO2 IS?</div>
+            <div class="options">
+                <div class="option correct">A. wso2server.sh status</div>
+                <div class="option">B. status.sh</div>
+                <div class="option">C. carbon.sh --status</div>
+                <div class="option">D. server-status.sh</div>
+            </div>
+            <button class="show-answer" onclick="toggleExplanation(this)">Show Explanation</button>
+            <div class="explanation">
+                'wso2server.sh status' command shows whether the server is running and its process ID.
+            </div>
+        </div>
+
+        <!-- Additional questions 16-20 would follow the same pattern -->
+
+    </div>
+
+    <script>
+        function toggleExplanation(button) {
+            const explanation = button.nextElementSibling;
+            if (explanation.style.display === 'block') {
+                explanation.style.display = 'none';
+                button.textContent = 'Show Explanation';
+            } else {
+                explanation.style.display = 'block';
+                button.textContent = 'Hide Explanation';
+            }
+        }
+    </script>
+</body>
+</html>
