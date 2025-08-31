@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>WSO2 API Manager 4.5 Roadmap</title>
+<style>
+  :root{
+    --bg:#0b1020; --card:#11162a; --ink:#eaf1ff; --muted:#99a3c4; --accent:#67e8f9; --accent2:#a78bfa;
+    --ok:#22c55e; --warn:#fbbf24; --danger:#ef4444;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{margin:0;background:radial-gradient(1200px 600px at 20% -10%,#1a2140 0%,#0b1020 55%),var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial}
+  header{padding:28px 16px 8px;text-align:center}
+  h1{margin:0;font-size:clamp(22px,3vw,34px);letter-spacing:.2px}
+  .sub{color:var(--muted);margin-top:6px}
+  .wrap{max-width:1100px;margin:0 auto;padding:20px}
+  .toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between;margin:10px 0 22px}
+  input[type="search"]{flex:1 1 360px;padding:10px 12px;border-radius:10px;border:1px solid #2a355d;background:#0f1630;color:var(--ink)}
+  .legend{display:flex;gap:10px;flex-wrap:wrap;font-size:12px;color:var(--muted)}
+  .pill{padding:4px 10px;border-radius:999px;background:#151c38;border:1px solid #283159}
+  .grid{position:relative;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+  .card{position:relative;background:linear-gradient(180deg,#12193a,#0f1530);border:1px solid #283159;border-radius:18px;padding:14px 14px 10px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+  .card h3{margin:0 0 8px;font-size:16px;display:flex;align-items:center;gap:8px}
+  .card h3 .step{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:6px;background:#172048;border:1px solid #2b3a74;color:var(--accent);font-size:12px}
+  .card details{border:1px dashed #2b3a74;border-radius:12px;padding:8px 10px;background:#0d1330}
+  .card summary{cursor:pointer;list-style:none}
+  .card summary::-webkit-details-marker{display:none}
+  .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+  .tag{font-size:11px;color:#b7c3ff;border:1px solid #2b3a74;background:#0c1230;padding:3px 8px;border-radius:999px}
+  .todo{display:flex;align-items:center;gap:8px;margin:6px 0}
+  .todo input{width:16px;height:16px}
+  a{color:var(--accent)}
+  .foot{color:var(--muted);text-align:center;margin:16px 0 28px}
+  .arrow{position:absolute;inset:auto auto -8px 50%;transform:translateX(-50%);width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-top:8px solid #283159}
+  .row{grid-column:1/-1;display:flex;gap:14px;flex-wrap:wrap}
+  .row .card{flex:1 1 260px}
+  .ok{color:var(--ok)}.warn{color:var(--warn)}.danger{color:var(--danger)}
+</style>
+</head>
+<body>
+  <header>
+    <h1>WSO2 API Manager 4.5 – Roadmap</h1>
+    <div class="sub">Roadmap.sh–style interactive guide: cards, expandable details, search and checklists.</div>
+  </header>
+  <div class="wrap">
+    <div class="toolbar">
+      <input id="search" type="search" placeholder="Filter topics (e.g., OAuth2, gateway, analytics, k8s, throttling)…" />
+      <div class="legend">
+        <span class="pill">Shift+Click — toggle section</span>
+        <span class="pill">State persists in your browser</span>
+      </div>
+    </div>
+
+    <section class="grid" id="grid">
+      <!-- 1. Prerequisites -->
+      <div class="card" data-tags="basics http json xml oauth jwt linux java sql">
+        <h3><span class="step">1</span> Prerequisites</h3>
+        <details open>
+          <summary>Core knowledge</summary>
+          <div class="todo"><input type="checkbox">HTTP, REST, SOAP fundamentals</div>
+          <div class="todo"><input type="checkbox">JSON, XML, XPath</div>
+          <div class="todo"><input type="checkbox">OAuth2, JWT basics</div>
+          <div class="todo"><input type="checkbox">Linux CLI & system basics</div>
+          <div class="todo"><input type="checkbox">Java & JVM fundamentals</div>
+          <div class="todo"><input type="checkbox">RDBMS basics & SQL</div>
+        </details>
+        <div class="tags"><span class="tag">HTTP</span><span class="tag">OAuth2</span><span class="tag">JVM</span></div>
+        <div class="arrow"></div>
+      </div>
+
+      <!-- 2. Installation & Initial Setup -->
+      <div class="card" data-tags="install pack download tar zip config start">
+        <h3><span class="step">2</span> Installation & Setup</h3>
+        <details>
+          <summary>Get APIM running</summary>
+          <ul>
+            <li>Download APIM 4.5 distribution</li>
+            <li>Understand folder layout & components</li>
+            <li>Configure <code>deployment.toml</code> basics</li>
+            <li>Start Publisher, Developer Portal, Gateway, Key Manager</li>
+          </ul>
+          <div class="todo"><input type="checkbox">Install and start local APIM</div>
+          <div class="todo"><input type="checkbox">Create initial admin & tenant users</div>
+        </details>
+        <div class="tags"><span class="tag">Deploy</span><span class="tag">Config</span></div>
+        <div class="arrow"></div>
+      </div>
+
+      <!-- 3. Core Components & Concepts -->
+      <div class="card" data-tags="publisher devportal gateway keymanager traffic manager labels">
+        <h3><span class="step">3</span> Core Components</h3>
+        <details>
+          <summary>Understand the pieces</summary>
+          <ul>
+            <li>API Publisher – design & publish APIs</li>
+            <li>Developer Portal – subscriptions & testing</li>
+            <li>Gateway – request processing & mediation</li>
+            <li>Key Manager – token issuance & validation</li>
+            <li>Traffic Manager – throttling & policies</li>
+          </ul>
+          <div class="todo"><input type="checkbox">Explore each console (Publisher/DevPortal)</div>
+          <div class="todo"><input type="checkbox">Deploy a sample API end-to-end</div>
+        </details>
+        <div class="tags"><span class="tag">Gateway</span><span class="tag">KeyManager</span><span class="tag">Traffic</span></div>
+        <div class="arrow"></div>
+      </div>
+
+      <!-- 4. API Design & Lifecycle -->
+      <div class="card" data-tags="design versioning lifecycle mocking prototyping">
+        <h3><span class="step">4</span> API Design & Lifecycle</h3>
+        <details>
+          <summary>Create, version & publish</summary>
+          <ul>
+            <li>Design APIs (REST endpoints, OpenAPI)</li>
+            <li>Versioning strategies & deprecation</li>
+            <li>Prototyping & mocking for early testing</li>
+            <li>API lifecycle states (Created -> Published -> Deprecated)</li>
+          </ul>
+          <div class="todo"><input type="checkbox">Import/OpenAPI & publish a versioned API</div>
+          <div class="todo"><input type="checkbox">Set lifecycle & test consumer flow</div>
+        </details>
+        <div class="tags"><span class="tag">OpenAPI</span><span class="tag">Lifecycle</span></div>
+        <div class="arrow"></div>
+      </div>
+
+      <!-- 5. Security & Access Control -->
+      <div class="card" data-tags="oauth2 jwt scopes mTLS cors apikey">
+        <h3><span class="step">5</span> Security & Policies</h3>
+        <details>
+          <summary>Protect your APIs</summary>
+          <ul>
+            <li>OAuth2 flows (client-credentials, auth-code, PKCE)</li>
+            <li>JWT token formats & validation</li>
+            <li>Scopes, roles, and API-level policies</li>
+            <li>Mutual TLS, API Keys, and CORS</li>
+          </ul>
+          <div class="todo"><input type="checkbox">Configure OAuth2 flow for an API</div>
+          <div class="todo"><input type="checkbox">Enable mTLS on Gateway</div>
+        </details>
+        <div class="tags"><span class="tag">OAuth2</span><span class="tag">mTLS</span><span class="tag">Scopes</span></div>
+        <div class="arrow"></div>
+      </div>
+
+      <!-- 6. Throttling & Traffic Management -->
+      <div class="card" data-tags="throttling policies rate-limiting subscription">
+        <h3><span class="step">6</span> Throttling & Traffic Management</h3>
+        <details>
+          <summary>Protect backend & monetize</summary>
+          <ul>
+            <li>Define throttling policies (per API, per app, per user)</li>
+            <li>Use rate-limiting, spike arrest, quotas</li>
+            <li>Understand policy tiers and enforcement points</li>
+          </ul>
+          <div class="todo"><input type="checkbox">Create a throttling policy and test</div>
+        </details>
+        <div class="tags"><span class="tag">RateLimit</span><span class="tag">Policies</span></div>
+        <div class="arrow"></div>
+      </div>
+
+      <!-- 7. Mediation & Gateway Extensibility -->
+      <div class="card" data-tags="mediations handlers sequences transformations">
+        <h3><span class="step">7</span> Mediation & Gateway Features</h3>
+        <details>
+          <summary>Customize request/response flow</summary>
+          <ul>
+            <li>Mediation sequences (in/out/fault)</li>
+            <li>Custom handlers & extensions</li>
+            <li>Message transformations (XSLT, scripts)</li>
+          </ul>
+          <div class="todo"><input type="checkbox">Add a simple mediation sequence to an API</div>
+        </details>
+        <div class="tags"><span class="tag">Mediation</span><span class="tag">Handlers</span></div>
+        <div class="arrow"></div>
+      </div>
+
+      <!-- 8. Analytics & Observability -->
+      <div class="card" data-tags="analytics logs monitoring prometheus grafana elk">
+        <h3><span class="step">8</span> Analytics & Observability</h3>
+        <details>
+          <summary>Track usage & health</summary>
+          <ul>
+            <li>WSO2 Analytics or external (ELK, Prometheus+Grafana)</li>
+            <li>Request/response logging & correlation IDs</li>
+            <li>Dashboards for usage, latency, errors</li>
+          </ul>
+          <div class="todo"><input type="checkbox">Ship APIM logs to ELK or Splunk</div>
+          <div class="todo"><input type="checkbox">Create Grafana dashboard for API latency</div>
+        </details>
+        <div class="tags"><span class="tag">Analytics</span><span class="tag">Dashboards</span></div>
+        <div class="arrow"></div>
+      </div>
+
+      <!-- 9. Integration with Micro Integrator & Other Systems -->
+      <div class="card" data-tags="micro integrator connectors backend integration ciam identity-server">
+        <h3><span class="step">9</span> Integration (MI & Ecosystem)</h3>
+        <details>
+          <summary>Combine API management with integration</summary>
+          <ul>
+            <li>Use WSO2 Micro Integrator for orchestration</li>
+            <li>Integrate with Identity Server for advanced IAM</li>
+            <li>Connect to backend systems (DB, MQ, Kafka)</li>
+          </ul>
+          <div class="todo"><input type="checkbox">Create an API that routes to a MI service</div>
+        </details>
+        <div class="tags"><span class="tag">MI</span><span class="tag">IS</span></div>
+        <div class="arrow"></div>
+      </div>
+
+      <!-- 10. Deployment & Scaling -->
+      <div class="card" data-tags="deployment clustering k8s docker helm hybrid gateway">
+        <h3><span class="step">10</span> Deployment & Scaling</h3>
+        <details>
+          <summary>Run APIM at scale</summary>
+          <ul>
+            <li>Single-node vs distributed deployment</li>
+            <li>Hybrid/Decentralized gateways</li>
+            <li>Containerize & run on Kubernetes (Helm charts)</li>
+            <li>Clustering & high availability considerations</li>
+          </ul>
+          <div class="todo"><input type="checkbox">Deploy APIM on Kubernetes (test cluster)</div>
+        </details>
+        <div class="tags"><span class="tag">K8s</span><span class="tag">Clustering</span></div>
+        <div class="arrow"></div>
+      </div>
+
+      <!-- 11. CI/CD & Automation -->
+      <div class="card" data-tags="cicd gitops jenkins github-actions helm chart images">
+        <h3><span class="step">11</span> CI/CD & DevOps</h3>
+        <details>
+          <summary>Automate delivery</summary>
+          <ul>
+            <li>Automate CAR/CICD packaging & image builds</li>
+            <li>Use Jenkins/GitHub Actions/ArgoCD for deployments</li>
+            <li>Config management with overlays & secrets</li>
+          </ul>
+          <div class="todo"><input type="checkbox">Create CI job to package and publish APIs</div>
+        </details>
+        <div class="tags"><span class="tag">CI</span><span class="tag">GitOps</span></div>
+        <div class="arrow"></div>
+      </div>
+
+      <!-- 12. Testing & QA -->
+      <div class="card" data-tags="testing contract tests integration postman newman">
+        <h3><span class="step">12</span> Testing & QA</h3>
+        <details>
+          <summary>Ensure reliability</summary>
+          <ul>
+            <li>Contract & integration tests (Postman/Newman, Karate)</li>
+            <li>Mock downstreams for test environments</li>
+            <li>Chaos and resiliency checks for gateways</li>
+          </ul>
+          <div class="todo"><input type="checkbox">Add contract tests in CI</div>
+        </details>
+        <div class="tags"><span class="tag">Tests</span><span class="tag">Mocks</span></div>
+        <div class="arrow"></div>
+      </div>
+
+      <!-- 13. Performance & Optimization -->
+      <div class="card" data-tags="jvm tuning caching db pooling gateway tuning"> 
+        <h3><span class="step">13</span> Performance & Optimization</h3>
+        <details>
+          <summary>Tune for production</summary>
+          <ul>
+            <li>JVM tuning & connection pooling</li>
+            <li>Gateway caching & backend pooling</li>
+            <li>Load testing & benchmarking</li>
+          </ul>
+          <div class="todo"><input type="checkbox">Create performance baseline</div>
+        </details>
+        <div class="tags"><span class="tag">JVM</span><span class="tag">Cache</span></div>
+        <div class="arrow"></div>
+      </div>
+
+      <!-- 14. Customization & Extensibility -->
+      <div class="card" data-tags="handlers custom extensions portal ui themes">
+        <h3><span class="step">14</span> Customization & Extensibility</h3>
+        <details>
+          <summary>Make APIM your own</summary>
+          <ul>
+            <li>Develop custom handlers & extensions</li>
+            <li>Customize Developer Portal UI</li>
+            <li>Extend Key Manager or analytics if required</li>
+          </ul>
+          <div class="todo"><input type="checkbox">Build & deploy a custom handler</div>
+        </details>
+        <div class="tags"><span class="tag">Handlers</span><span class="tag">Portal</span></div>
+        <div class="arrow"></div>
+      </div>
+
+      <!-- 15. Ecosystem & Community -->
+      <div class="card" data-tags="wso2 identity server micro integrator community cert">
+        <h3><span class="step">15</span> Ecosystem & Community</h3>
+        <details>
+          <summary>Learn beyond APIM</summary>
+          <ul>
+            <li>WSO2 Identity Server for IAM</li>
+            <li>WSO2 Micro Integrator for orchestration</li>
+            <li>Join WSO2 community, forums & training</li>
+          </ul>
+          <div class="todo"><input type="checkbox">Explore WSO2 certification paths</div>
+        </details>
+        <div class="tags"><span class="tag">IS</span><span class="tag">MI</span></div>
+      </div>
+    </section>
+
+    <p class="foot">Tip: use the search box to filter cards by keywords (e.g., "throttling", "mTLS"). Your checkmarks are saved locally.</p>
+  </div>
+
+  <script>
+    // Simple search filter
+    const search = document.getElementById('search');
+    const cards = [...document.querySelectorAll('.card')];
+    search.addEventListener('input', e => {
+      const q = e.target.value.toLowerCase().trim();
+      cards.forEach(c => {
+        const hay = (c.innerText + ' ' + (c.dataset.tags||'')).toLowerCase();
+        c.style.display = hay.includes(q) ? '' : 'none';
+      });
+    });
+
+    // Persist checkbox state to localStorage
+    const KEY = 'apim45_roadmap_checks_v1';
+    function save(){
+      const all = [...document.querySelectorAll('.todo input[type="checkbox"]')].map(cb => cb.checked?1:0);
+      localStorage.setItem(KEY, JSON.stringify(all));
+    }
+    function load(){
+      const raw = localStorage.getItem(KEY);
+      if(!raw) return;
+      const arr = JSON.parse(raw);
+      const boxes = [...document.querySelectorAll('.todo input[type="checkbox"]')];
+      boxes.forEach((cb,i)=>{ if(typeof arr[i]!== 'undefined') cb.checked = !!arr[i]; });
+    }
+    document.addEventListener('change', e => {
+      const el = e.target; if(el && el.closest('.todo') && el.type==='checkbox') save();
+    });
+    load();
+
+    // Shift+Click on card header to toggle all checkboxes within card
+    document.querySelectorAll('.card h3').forEach(h => {
+      h.addEventListener('click', e => {
+        if(!e.shiftKey) return; // only with Shift
+        const card = e.currentTarget.closest('.card');
+        const boxes = card.querySelectorAll('.todo input[type="checkbox"]');
+        const anyUnchecked = [...boxes].some(b=>!b.checked);
+        boxes.forEach(b=> b.checked = anyUnchecked);
+        save();
+      });
+      h.title = 'Shift+Click to check/uncheck all in this section';
+    });
+  </script>
+</body>
+</html>
