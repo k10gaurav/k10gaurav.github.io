@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>WSO2 Micro Integrator 4.4 + VS Code Roadmap</title>
+<style>
+  :root{
+    --bg:#0b1020; --card:#11162a; --ink:#eaf1ff; --muted:#99a3c4; --accent:#67e8f9; --accent2:#a78bfa;
+    --ok:#22c55e; --warn:#fbbf24; --danger:#ef4444;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{margin:0;background:radial-gradient(1200px 600px at 20% -10%,#1a2140 0%,#0b1020 55%),var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial}
+  header{padding:28px 16px 8px;text-align:center}
+  h1{margin:0;font-size:clamp(22px,3vw,34px);letter-spacing:.2px}
+  .sub{color:var(--muted);margin-top:6px}
+  .wrap{max-width:1100px;margin:0 auto;padding:20px}
+  .toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between;margin:10px 0 22px}
+  input[type="search"]{flex:1 1 360px;padding:10px 12px;border-radius:10px;border:1px solid #2a355d;background:#0f1630;color:var(--ink)}
+  .legend{display:flex;gap:10px;flex-wrap:wrap;font-size:12px;color:var(--muted)}
+  .pill{padding:4px 10px;border-radius:999px;background:#151c38;border:1px solid #283159}
+  .grid{position:relative;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+  .card{position:relative;background:linear-gradient(180deg,#12193a,#0f1530);border:1px solid #283159;border-radius:18px;padding:14px 14px 10px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+  .card h3{margin:0 0 8px;font-size:16px;display:flex;align-items:center;gap:8px}
+  .card h3 .step{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:6px;background:#172048;border:1px solid #2b3a74;color:var(--accent);font-size:12px}
+  .card details{border:1px dashed #2b3a74;border-radius:12px;padding:8px 10px;background:#0d1330}
+  .card summary{cursor:pointer;list-style:none}
+  .card summary::-webkit-details-marker{display:none}
+  .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+  .tag{font-size:11px;color:#b7c3ff;border:1px solid #2b3a74;background:#0c1230;padding:3px 8px;border-radius:999px}
+  .todo{display:flex;align-items:center;gap:8px;margin:6px 0}
+  .todo input{width:16px;height:16px}
+  a{color:var(--accent)}
+  .foot{color:var(--muted);text-align:center;margin:16px 0 28px}
+  .arrow{position:absolute;inset:auto auto -8px 50%;transform:translateX(-50%);width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-top:8px solid #283159}
+  .row{grid-column:1/-1;display:flex;gap:14px;flex-wrap:wrap}
+  .row .card{flex:1 1 260px}
+  .ok{color:var(--ok)}.warn{color:var(--warn)}.danger{color:var(--danger)}
+</style>
+</head>
+<body>
+  <header>
+    <h1>WSO2 Micro Integrator 4.4 + VS Code – Roadmap</h1>
+    <div class="sub">A pragmatic, roadmap.sh–style guide: boxes you can check off, expandable details, and a clean grid layout.</div>
+  </header>
+  <div class="wrap">
+    <div class="toolbar">
+      <input id="search" type="search" placeholder="Filter topics (e.g., connectors, docker, debugging, kafka, secure vault)…" />
+      <div class="legend">
+        <span class="pill">Shift+Click — check section</span>
+        <span class="pill">State persists in your browser</span>
+      </div>
+    </div>
+
+    <section class="grid" id="grid">
+      <!-- 1. Prerequisites -->
+      <div class="card" data-tags="basics http xml json linux git java ssl sql">
+        <h3><span class="step">1</span> Prerequisites</h3>
+        <details open>
+          <summary>Essentials before MI</summary>
+          <div class="todo"><input type="checkbox">HTTP, REST, SOAP fundamentals</div>
+          <div class="todo"><input type="checkbox">JSON, XML (XPath/XSLT basics)</div>
+          <div class="todo"><input type="checkbox">Linux CLI, systemd, logs</div>
+          <div class="todo"><input type="checkbox">Git & branching workflow</div>
+          <div class="todo"><input type="checkbox">SSL/TLS, mutual TLS concepts</div>
+          <div class="todo"><input type="checkbox">RDBMS basics & SQL</div>
+        </details>
+        <div class="tags"><span class="tag">HTTP</span><span class="tag">XML</span><span class="tag">Linux</span></div>
+        <div class="arrow"></div>
+      </div>
+
+      <!-- 2. Local Tooling (VS Code) -->
+      <div class="card" data-tags="vscode extensions xml yaml docker rest-client gitlens makefile">
+        <h3><span class="step">2</span> VS Code Setup</h3>
+        <details>
+          <summary>Extensions & workspace hygiene</summary>
+          <ul>
+            <li>XML, YAML, JSON Tools</li>
+            <li>Docker, Kubernetes</li>
+            <li>REST Client (create <code>tests.http</code>)</li>
+            <li>GitLens, EditorConfig</li>
+            <li>Makefile Tools or NPM scripts</li>
+          </ul>
+          <div class="todo"><input type="checkbox">Create <code>.editorconfig</code></div>
+          <div class="todo"><input type="checkbox">Create <code>.vscode/tasks.json</code> (build/run)</div>
+          <div class="todo"><input type="checkbox">Create <code>.vscode/launch.json</code> (attach logs)</div>
+        </details>
+        <div class="tags"><span class="tag">Extensions</span><span class="tag">REST Client</span><span class="tag">Docker</span></div>
+        <div class="arrow"></div>
+      </div>
+
+      <!-- 3. Micro Integrator Basics -->
+      <div class="card" data-tags="mi basics runtime synapse mediation">
+        <h3><span class="step">3</span> Micro Integrator Basics</h3>
+        <details>
+          <summary>Runtime & artifacts</summary>
+          <ul>
+            <li>Runtime layout & <code>deployment.toml</code></li>
+            <li>Synapse mediation: sequences, endpoints, APIs, proxies</li>
+            <li>Inbound endpoints, tasks, message stores/processors</li>
+            <li>Fault handling & error sequences</li>
+          </ul>
+          <div class="todo"><input type="checkbox">Explore <code>repository/deployment/server</code></div>
+          <div class="todo"><input type="checkbox">Create a simple <code>API</code> + <code>sequence</code></div>
+          <div class="todo"><input type="checkbox">Add a <code>fault</code> sequence</div>
+        </details>
+        <div class="tags"><span class="tag">Synapse</span><span class="tag">Sequences</span><span class="tag">Endpoints</span></div>
+        <div class="arrow"></div>
+      </div>
+
+      <!-- 4. Project Structure (VS Code) -->
+      <div class="card" data-tags="project structure maven carbonapp capps">
+        <h3><span class="step">4</span> Project Structure</h3>
+        <details>
+          <summary>Organize for teams & CI</summary>
+          <ul>
+            <li>Source tree: <code>integration/</code> for synapse configs</li>
+            <li>Package as <strong>CAR</strong> (Composite Application)</li>
+            <li>Keep <code>deployment.toml</code> env-specific via overlays</li>
+            <li>Version artifacts (semantic)</li>
+          </ul>
+          <div class="todo"><input type="checkbox">Create mono-repo with <code>capps/</code> & <code>configs/</code></div>
+          <div class="todo"><input type="checkbox">Add <code>Makefile</code> targets: build/run/push</div>
+        </details>
+        <div class="tags"><span class="tag">CAR</span><span class="tag">Repo Layout</span></div>
+        <div class="arrow"></div>
+      </div>
+
+      <!-- 5. Mediation Patterns -->
+      <div class="card" data-tags="patterns routing transform enrich cache">
+        <h3><span class="step">5</span> Mediation Patterns</h3>
+        <details>
+          <summary>Core patterns to master</summary>
+          <ul>
+            <li>Content-based routing (switch, filter)</li>
+            <li>Transformation (payloadFactory, enrich, XSLT)</li>
+            <li>Call / Callout with timeouts & retries</li>
+            <li>Caching & aggregation (aggregate, iterate)</li>
+          </ul>
+          <div class="todo"><input type="checkbox">Implement a routing gateway API</div>
+          <div class="todo"><input type="checkbox">Add retry + backoff via <code>Call</code> + fault seq</div>
+        </details>
+        <div class="tags"><span class="tag">Routing</span><span class="tag">Transform</span><span class="tag">Resilience</span></div>
+        <div class="arrow"></div>
+      </div>
+
+      <!-- 6. Connectors & Binders -->
+      <div class="card" data-tags="connectors jdbc jms kafka sftp file http">
+        <h3><span class="step">6</span> Connectors</h3>
+        <details>
+          <summary>Common backends</summary>
+          <ul>
+            <li>JDBC (pooling, transactions)</li>
+            <li>JMS (ActiveMQ/IBM MQ), Kafka</li>
+            <li>File/SFTP, Email</li>
+            <li>HTTP backends with OAuth/JWT</li>
+          </ul>
+          <div class="todo"><input type="checkbox">Create DB read/write flow</div>
+          <div class="todo"><input type="checkbox">Consume from JMS/Kafka</div>
+        </details>
+        <div class="tags"><span class="tag">DB</span><span class="tag">JMS</span><span class="tag">Kafka</span></div>
+        <div class="arrow"></div>
+      </div>
+
+      <!-- 7. Security -->
+      <div class="card" data-tags="security mtls oauth jwt basic-Auth vault">
+        <h3><span class="step">7</span> Security</h3>
+        <details>
+          <summary>Transport & app security</summary>
+          <ul>
+            <li>HTTPS listeners, mutual TLS</li>
+            <li>Backend OAuth2/JWT, Basic Auth</li>
+            <li>Secure Vault for secrets</li>
+            <li>IP allow/deny, CORS</li>
+          </ul>
+          <div class="todo"><input type="checkbox">Enable TLS on MI</div>
+          <div class="todo"><input type="checkbox">Use Secure Vault for DB creds</div>
+        </details>
+        <div class="tags"><span class="tag">mTLS</span><span class="tag">OAuth2</span><span class="tag">Vault</span></div>
+        <div class="arrow"></div>
+      </div>
+
+      <!-- 8. Observability -->
+      <div class="card" data-tags="observability logging metrics tracing dashboards">
+        <h3><span class="step">8</span> Observability</h3>
+        <details>
+          <summary>Know what your flows do</summary>
+          <ul>
+            <li>Logs (wire, audit), correlation IDs</li>
+            <li>Metrics export (JMX/Prometheus sidecar)</li>
+            <li>Dashboards (Grafana/ELK)</li>
+          </ul>
+          <div class="todo"><input type="checkbox">Turn on wire logs per env</div>
+          <div class="todo"><input type="checkbox">Ship logs to ELK</div>
+        </details>
+        <div class="tags"><span class="tag">Logs</span><span class="tag">Metrics</span><span class="tag">Dashboards</span></div>
+        <div class="arrow"></div>
+      </div>
+
+      <!-- 9. Testing & Quality -->
+      <div class="card" data-tags="testing unit integration rest-client postman karate">
+        <h3><span class="step">9</span> Testing & Quality</h3>
+        <details>
+          <summary>Automate verification</summary>
+          <ul>
+            <li>REST Client <code>.http</code> specs in repo</li>
+            <li>Contract tests for APIs</li>
+            <li>Mock/stub downstreams</li>
+            <li>Static checks on XML (lint)</li>
+          </ul>
+          <div class="todo"><input type="checkbox">Add <code>tests.http</code> and CI job</div>
+          <div class="todo"><input type="checkbox">Contract tests for critical flows</div>
+        </details>
+        <div class="tags"><span class="tag">CI Tests</span><span class="tag">Mocks</span></div>
+        <div class="arrow"></div>
+      </div>
+
+      <!-- 10. Packaging & Releases -->
+      <div class="card" data-tags="packaging car docker images versioning">
+        <h3><span class="step">10</span> Packaging & Releases</h3>
+        <details>
+          <summary>From source to artifact</summary>
+          <ul>
+            <li>Build CARs; version per service</li>
+            <li>Immutable Docker image with CARs</li>
+            <li>Keep runtime config external</li>
+          </ul>
+          <div class="todo"><input type="checkbox">Create Dockerfile (COPY CARs)</div>
+          <div class="todo"><input type="checkbox">Tag/push image from CI</div>
+        </details>
+        <div class="tags"><span class="tag">CAR</span><span class="tag">Docker</span></div>
+        <div class="arrow"></div>
+      </div>
+
+      <!-- 11. Configuration & Environments -->
+      <div class="card" data-tags="config deployment.toml environments overlays secrets">
+        <h3><span class="step">11</span> Configuration & Environments</h3>
+        <details>
+          <summary>Promote safely</summary>
+          <ul>
+            <li>Externalize <code>deployment.toml</code></li>
+            <li>Env overlays (DEV/QA/PROD)</li>
+            <li>Secrets via Secure Vault / orchestrator</li>
+          </ul>
+          <div class="todo"><input type="checkbox">Per-env config maps</div>
+          <div class="todo"><input type="checkbox">Restrict secrets to runtime only</div>
+        </details>
+        <div class="tags"><span class="tag">Configs</span><span class="tag">Secrets</span></div>
+        <div class="arrow"></div>
+      </div>
+
+      <!-- 12. Containerization & K8s -->
+      <div class="card" data-tags="kubernetes helm kustomize openshift ingress istio">
+        <h3><span class="step">12</span> Containers & Kubernetes</h3>
+        <details>
+          <summary>Operate at scale</summary>
+          <ul>
+            <li>Container health (liveness/readiness)</li>
+            <li>Ingress, TLS, mTLS (service mesh optional)</li>
+            <li>Horizontal scaling & autoscale policy</li>
+          </ul>
+          <div class="todo"><input type="checkbox">Add probes to K8s manifest</div>
+          <div class="todo"><input type="checkbox">Deploy with Helm/Kustomize</div>
+        </details>
+        <div class="tags"><span class="tag">K8s</span><span class="tag">Ingress</span><span class="tag">Autoscale</span></div>
+        <div class="arrow"></div>
+      </div>
+
+      <!-- 13. Admin & Ops Tools -->
+      <div class="card" data-tags="admin cli dashboard monitoring backups upgrades">
+        <h3><span class="step">13</span> Admin & Ops</h3>
+        <details>
+          <summary>Day‑2 operations</summary>
+          <ul>
+            <li>MI management API / CLI</li>
+            <li>Backup/restore CARs & configs</li>
+            <li>Rolling upgrades playbook</li>
+          </ul>
+          <div class="todo"><input type="checkbox">Document backup/restore runbooks</div>
+          <div class="todo"><input type="checkbox">Create upgrade checklist</div>
+        </details>
+        <div class="tags"><span class="tag">CLI</span><span class="tag">Runbooks</span></div>
+        <div class="arrow"></div>
+      </div>
+
+      <!-- 14. Performance & Resilience -->
+      <div class="card" data-tags="performance caching threadpools timeouts load-testing resilience">
+        <h3><span class="step">14</span> Performance & Resilience</h3>
+        <details>
+          <summary>Stay fast under pressure</summary>
+          <ul>
+            <li>Thread pools & connection pools</li>
+            <li>Timeouts, circuit‑breaker via fault sequences</li>
+            <li>Load testing (baseline & regressions)</li>
+          </ul>
+          <div class="todo"><input type="checkbox">Baseline with load test</div>
+          <div class="todo"><input type="checkbox">Add fault policies for timeouts</div>
+        </details>
+        <div class="tags"><span class="tag">Load</span><span class="tag">Timeouts</span><span class="tag">Pools</span></div>
+        <div class="arrow"></div>
+      </div>
+
+      <!-- 15. Documentation & DX -->
+      <div class="card" data-tags="docs readme diagrams mermaid onboarding">
+        <h3><span class="step">15</span> Documentation & DX</h3>
+        <details>
+          <summary>Make it easy to maintain</summary>
+          <ul>
+            <li>Repo README with run/build instructions</li>
+            <li>Mermaid sequence diagrams for flows</li>
+            <li>Onboarding guide + checklists</li>
+          </ul>
+          <div class="todo"><input type="checkbox">Add Mermaid diagrams</div>
+          <div class="todo"><input type="checkbox">Create onboarding doc</div>
+        </details>
+        <div class="tags"><span class="tag">Mermaid</span><span class="tag">Onboarding</span></div>
+      </div>
+    </section>
+
+    <p class="foot">Tip: use the search box to filter cards by keywords (e.g., "vault", "kafka"). Your checkmarks are saved locally.</p>
+  </div>
+
+  <script>
+    // Simple search filter
+    const search = document.getElementById('search');
+    const cards = [...document.querySelectorAll('.card')];
+    search.addEventListener('input', e => {
+      const q = e.target.value.toLowerCase().trim();
+      cards.forEach(c => {
+        const hay = (c.innerText + ' ' + (c.dataset.tags||'')).toLowerCase();
+        c.style.display = hay.includes(q) ? '' : 'none';
+      });
+    });
+
+    // Persist checkbox state to localStorage
+    const KEY = 'mi44_vscode_roadmap_checks_v1';
+    function save(){
+      const all = [...document.querySelectorAll('.todo input[type="checkbox"]')].map(cb => cb.checked?1:0);
+      localStorage.setItem(KEY, JSON.stringify(all));
+    }
+    function load(){
+      const raw = localStorage.getItem(KEY);
+      if(!raw) return;
+      const arr = JSON.parse(raw);
+      const boxes = [...document.querySelectorAll('.todo input[type="checkbox"]')];
+      boxes.forEach((cb,i)=>{ if(typeof arr[i]!== 'undefined') cb.checked = !!arr[i]; });
+    }
+    document.addEventListener('change', e => {
+      if(e.target.matches('.todo input[type="checkbox")]')) save();
+    });
+    // Fix selector (typo-safe)
+    document.addEventListener('change', e => {
+      const el = e.target; if(el && el.closest('.todo') && el.type==='checkbox') save();
+    });
+    load();
+
+    // Shift+Click on card header to toggle all checkboxes within card
+    document.querySelectorAll('.card h3').forEach(h => {
+      h.addEventListener('click', e => {
+        if(!e.shiftKey) return; // only with Shift
+        const card = e.currentTarget.closest('.card');
+        const boxes = card.querySelectorAll('.todo input[type="checkbox"]');
+        const anyUnchecked = [...boxes].some(b=>!b.checked);
+        boxes.forEach(b=> b.checked = anyUnchecked);
+        save();
+      });
+      h.title = 'Shift+Click to check/uncheck all in this section';
+    });
+  </script>
+</body>
+</html>
