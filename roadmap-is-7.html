@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>WSO2 Identity Server 7.0 Roadmap</title>
+<style>
+  :root{
+    --bg:#0b1020; --card:#11162a; --ink:#eaf1ff; --muted:#99a3c4; --accent:#67e8f9; --accent2:#a78bfa;
+    --ok:#22c55e; --warn:#fbbf24; --danger:#ef4444;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{margin:0;background:radial-gradient(1200px 600px at 20% -10%,#1a2140 0%,#0b1020 55%),var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial}
+  header{padding:28px 16px 8px;text-align:center}
+  h1{margin:0;font-size:clamp(22px,3vw,34px);letter-spacing:.2px}
+  .sub{color:var(--muted);margin-top:6px}
+  .wrap{max-width:1100px;margin:0 auto;padding:20px}
+  .toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between;margin:10px 0 22px}
+  input[type="search"]{flex:1 1 360px;padding:10px 12px;border-radius:10px;border:1px solid #2a355d;background:#0f1630;color:var(--ink)}
+  .legend{display:flex;gap:10px;flex-wrap:wrap;font-size:12px;color:var(--muted)}
+  .pill{padding:4px 10px;border-radius:999px;background:#151c38;border:1px solid #283159}
+  .grid{position:relative;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+  .card{position:relative;background:linear-gradient(180deg,#12193a,#0f1530);border:1px solid #283159;border-radius:18px;padding:14px 14px 10px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+  .card h3{margin:0 0 8px;font-size:16px;display:flex;align-items:center;gap:8px}
+  .card h3 .step{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:6px;background:#172048;border:1px solid #2b3a74;color:var(--accent);font-size:12px}
+  .card details{border:1px dashed #2b3a74;border-radius:12px;padding:8px 10px;background:#0d1330}
+  .card summary{cursor:pointer;list-style:none}
+  .card summary::-webkit-details-marker{display:none}
+  .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+  .tag{font-size:11px;color:#b7c3ff;border:1px solid #2b3a74;background:#0c1230;padding:3px 8px;border-radius:999px}
+  .todo{display:flex;align-items:center;gap:8px;margin:6px 0}
+  .todo input{width:16px;height:16px}
+  a{color:var(--accent)}
+  .foot{color:var(--muted);text-align:center;margin:16px 0 28px}
+  .arrow{position:absolute;inset:auto auto -8px 50%;transform:translateX(-50%);width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-top:8px solid #283159}
+  .row{grid-column:1/-1;display:flex;gap:14px;flex-wrap:wrap}
+  .row .card{flex:1 1 260px}
+  .ok{color:var(--ok)}.warn{color:var(--warn)}.danger{color:var(--danger)}
+</style>
+</head>
+<body>
+  <header>
+    <h1>WSO2 Identity Server 7.0 Roadmap</h1>
+    <div class="sub">A comprehensive guide to mastering WSO2 IS 7.0 with checklists and expandable details</div>
+  </header>
+  <div class="wrap">
+    <div class="toolbar">
+      <input id="search" type="search" placeholder="Filter topics (e.g., oauth, saml, scim, docker, authentication)…" />
+      <div class="legend">
+        <span class="pill">Shift+Click — check section</span>
+        <span class="pill">State persists in your browser</span>
+      </div>
+    </div>
+
+    <section class="grid" id="grid">
+      <!-- 1. Prerequisites -->
+      <div class="card" data-tags="basics identity iam security protocols linux java">
+        <h3><span class="step">1</span> Prerequisites</h3>
+        <details open>
+          <summary>Essentials before Identity Server</summary>
+          <div class="todo"><input type="checkbox">Identity and Access Management (IAM) fundamentals</div>
+          <div class="todo"><input type="checkbox">Authentication protocols (OAuth2, OIDC, SAML)</div>
+          <div class="todo"><input type="checkbox">Directory services (LDAP, Active Directory)</div>
+          <div class="todo"><input type="checkbox">Linux CLI and system administration</div>
+          <div class="todo"><input type="checkbox">Java and JVM concepts</div>
+          <div class="todo"><input type="checkbox">SSL/TLS and PKI concepts</div>
+        </details>
+        <div class="tags"><span class="tag">IAM</span><span class="tag">Security</span><span class="tag">Protocols</span></div>
+        <div class="arrow"></div>
+      </div>
+
+      <!-- 2. Identity Server Basics -->
+      <div class="card" data-tags="is basics installation setup deployment toml">
+        <h3><span class="step">2</span> Identity Server Basics</h3>
+        <details>
+          <summary>Core concepts and installation</summary>
+          <ul>
+            <li>WSO2 IS architecture and components</li>
+            <li>Installation methods (binary, docker, kubernetes)</li>
+            <li>Configuration files structure</li>
+            <li>deployment.toml configuration</li>
+            <li>Starting and stopping the server</li>
+          </ul>
+          <div class="todo"><input type="checkbox">Install WSO2 IS 7.0</div>
+          <div class="todo"><input type="checkbox">Explore management console</div>
+          <div class="todo"><input type="checkbox">Basic deployment.toml configuration</div>
+        </details>
+        <div class="tags"><span class="tag">Installation</span><span class="tag">Configuration</span><span class="tag">Architecture</span></div>
+        <div class="arrow"></div>
+      </div>
+
+      <!-- 3. User Management -->
+      <div class="card" data-tags="users roles permissions scim ldap">
+        <h3><span class="step">3</span> User Management</h3>
+        <details>
+          <summary>Managing users and identities</summary>
+          <ul>
+            <li>User stores (primary and secondary)</li>
+            <li>LDAP/Active Directory integration</li>
+            <li>JDBC user stores</li>
+            <li>SCIM 2.0 for user provisioning</li>
+            <li>Role-based access control (RBAC)</li>
+          </ul>
+          <div class="todo"><input type="checkbox">Configure primary user store</div>
+          <div class="todo"><input type="checkbox">Integrate with LDAP/AD</div>
+          <div class="todo"><input type="checkbox">Create roles and permissions</div>
+        </details>
+        <div class="tags"><span class="tag">Users</span><span class="tag">Roles</span><span class="tag">SCIM</span></div>
+        <div class="arrow"></div>
+      </div>
+
+      <!-- 4. Authentication -->
+      <div class="card" data-tags="authentication multi-factor adaptive mfa biometric">
+        <h3><span class="step">4</span> Authentication</h3>
+        <details>
+          <summary>Authentication methods and flows</summary>
+          <ul>
+            <li>Multi-factor authentication (MFA)</li>
+            <li>Adaptive authentication</li>
+            <li>Biometric authentication</li>
+            <li>Social login (Google, Facebook, etc.)</li>
+            <li>Passwordless authentication</li>
+          </ul>
+          <div class="todo"><input type="checkbox">Configure multi-factor authentication</div>
+          <div class="todo"><input type="checkbox">Set up adaptive authentication rules</div>
+          <div class="todo"><input type="checkbox">Implement social login</div>
+        </details>
+        <div class="tags"><span class="tag">MFA</span><span class="tag">Adaptive</span><span class="tag">Social Login</span></div>
+        <div class="arrow"></div>
+      </div>
+
+      <!-- 5. OAuth 2.0 and OpenID Connect -->
+      <div class="card" data-tags="oauth oidc tokens jwt grants">
+        <h3><span class="step">5</span> OAuth 2.0 & OpenID Connect</h3>
+        <details>
+          <summary>Authorization and authentication protocols</summary>
+          <ul>
+            <li>OAuth 2.0 grant types</li>
+            <li>OpenID Connect flows</li>
+            <li>JWT tokens and validation</li>
+            <li>Token management and revocation</li>
+            <li>Dynamic client registration</li>
+          </ul>
+          <div class="todo"><input type="checkbox">Configure OAuth2 service provider</div>
+          <div class="todo"><input type="checkbox">Implement OpenID Connect flow</div>
+          <div class="todo"><input type="checkbox">Customize JWT tokens</div>
+        </details>
+        <div class="tags"><span class="tag">OAuth2</span><span class="tag">OIDC</span><span class="tag">JWT</span></div>
+        <div class="arrow"></div>
+      </div>
+
+      <!-- 6. SAML 2.0 -->
+      <div class="card" data-tags="saml sso federation metadata">
+        <h3><span class="step">6</span> SAML 2.0</h3>
+        <details>
+          <summary>SAML-based single sign-on</summary>
+          <ul>
+            <li>SAML 2.0 Web SSO</li>
+            <li>Identity provider and service provider configurations</li>
+            <li>SAML metadata exchange</li>
+            <li>SAML assertion validation</li>
+            <li>SLO (Single Logout)</li>
+          </ul>
+          <div class="todo"><input type="checkbox">Configure SAML identity provider</div>
+          <div class="todo"><input type="checkbox">Configure SAML service provider</div>
+          <div class="todo"><input type="checkbox">Implement SLO</div>
+        </details>
+        <div class="tags"><span class="tag">SAML</span><span class="tag">SSO</span><span class="tag">Federation</span></div>
+        <div class="arrow"></div>
+      </div>
+
+      <!-- 7. Identity Federation -->
+      <div class="card" data-tags="federation social login enterprise idp">
+        <h3><span class="step">7</span> Identity Federation</h3>
+        <details>
+          <summary>Connecting multiple identity sources</summary>
+          <ul>
+            <li>Social identity providers</li>
+            <li>Enterprise identity providers</li>
+            <li>Just-in-time provisioning</li>
+            <li>Identity provider templates</li>
+            <li>Multi-option authentication</li>
+          </ul>
+          <div class="todo"><input type="checkbox">Federate with enterprise IDP</div>
+          <div class="todo"><input type="checkbox">Configure social identity providers</div>
+          <div class="todo"><input type="checkbox">Set up just-in-time provisioning</div>
+        </details>
+        <div class="tags"><span class="tag">Federation</span><span class="tag">Social</span><span class="tag">Enterprise</span></div>
+        <div class="arrow"></div>
+      </div>
+
+      <!-- 8. API Security -->
+      <div class="card" data-tags="api security gateway oauth scopes">
+        <h3><span class="step">8</span> API Security</h3>
+        <details>
+          <summary>Securing APIs with WSO2 IS</summary>
+          <ul>
+            <li>API authentication and authorization</li>
+            <li>OAuth2 scope validation</li>
+            <li>API resource protection</li>
+            <li>Integration with API managers</li>
+            <li>JWT token introspection</li>
+          </ul>
+          <div class="todo"><input type="checkbox">Secure APIs with OAuth2</div>
+          <div class="todo"><input type="checkbox">Configure scope validation</div>
+          <div class="todo"><input type="checkbox">Integrate with WSO2 API Manager</div>
+        </details>
+        <div class="tags"><span class="tag">API</span><span class="tag">Security</span><span class="tag">OAuth</span></div>
+        <div class="arrow"></div>
+      </div>
+
+      <!-- 9. Consent Management -->
+      <div class="card" data-tags="consent gdpr privacy management">
+        <h3><span class="step">9</span> Consent Management</h3>
+        <details>
+          <summary>Managing user consent and privacy</summary>
+          <ul>
+            <li>Consent receipt specification</li>
+            <li>GDPR compliance features</li>
+            <li>Purpose-based consent</li>
+            <li>Consent revocation</li>
+            <li>Privacy policy management</li>
+          </ul>
+          <div class="todo"><input type="checkbox">Configure consent purposes</div>
+          <div class="todo"><input type="checkbox">Implement consent receipt generation</div>
+          <div class="todo"><input type="checkbox">Set up privacy policy</div>
+        </details>
+        <div class="tags"><span class="tag">Consent</span><span class="tag">GDPR</span><span class="tag">Privacy</span></div>
+        <div class="arrow"></div>
+      </div>
+
+      <!-- 10. Identity Server as Key Manager -->
+      <div class="card" data-tags="keymanager km oauth tokens apim">
+        <h3><span class="step">10</span> Identity Server as Key Manager</h3>
+        <details>
+          <summary>Using IS as a key management server</summary>
+          <ul>
+            <li>Key manager capabilities</li>
+            <li>OAuth2 token management</li>
+            <li>Integration patterns</li>
+            <li>API security enforcement</li>
+            <li>Throttling and analytics</li>
+          </ul>
+          <div class="todo"><input type="checkbox">Configure IS as key manager</div>
+          <div class="todo"><input type="checkbox">Integrate with external applications</div>
+          <div class="todo"><input type="checkbox">Set up token validation</div>
+        </details>
+        <div class="tags"><span class="tag">Key Manager</span><span class="tag">OAuth</span><span class="tag">APIM</span></div>
+        <div class="arrow"></div>
+      </div>
+
+      <!-- 11. High Availability & Clustering -->
+      <div class="card" data-tags="ha clustering deployment patterns loadbalancing">
+        <h3><span class="step">11</span> High Availability & Clustering</h3>
+        <details>
+          <summary>Deployment architectures for scalability</summary>
+          <ul>
+            <li>Clustering concepts</li>
+            <li>Session persistence</li>
+            <li>Load balancing configurations</li>
+            <li>Database configurations for HA</li>
+            <li>Disaster recovery setups</li>
+          </ul>
+          <div class="todo"><input type="checkbox">Set up basic clustering</div>
+          <div class="todo"><input type="checkbox">Configure load balancer</div>
+          <div class="todo"><input type="checkbox">Implement session persistence</div>
+        </details>
+        <div class="tags"><span class="tag">HA</span><span class="tag">Clustering</span><span class="tag">Deployment</span></div>
+        <div class="arrow"></div>
+      </div>
+
+      <!-- 12. Containerization & Kubernetes -->
+      <div class="card" data-tags="docker kubernetes containers helm orchestration">
+        <h3><span class="step">12</span> Containerization & Kubernetes</h3>
+        <details>
+          <summary>Modern deployment approaches</summary>
+          <ul>
+            <li>Docker containerization</li>
+            <li>Kubernetes deployment</li>
+            <li>Helm charts for WSO2 IS</li>
+            <li>Container security practices</li>
+            <li>Orchestration patterns</li>
+          </ul>
+          <div class="todo"><input type="checkbox">Create Docker image for IS</div>
+          <div class="todo"><input type="checkbox">Deploy to Kubernetes cluster</div>
+          <div class="todo"><input type="checkbox">Use Helm charts for deployment</div>
+        </details>
+        <div class="tags"><span class="tag">Docker</span><span class="tag">Kubernetes</span><span class="tag">Helm</span></div>
+        <div class="arrow"></div>
+      </div>
+
+      <!-- 13. Monitoring & Analytics -->
+      <div class="card" data-tags="monitoring analytics logs metrics elk">
+        <h3><span class="step">13</span> Monitoring & Analytics</h3>
+        <details>
+          <summary>Observability and performance tracking</summary>
+          <ul>
+            <li>Log analysis and management</li>
+            <li>Performance metrics collection</li>
+            <li>Integration with monitoring tools</li>
+            <li>ELK stack for identity analytics</li>
+            <li>Audit logging and reporting</li>
+          </ul>
+          <div class="todo"><input type="checkbox">Configure comprehensive logging</div>
+          <div class="todo"><input type="checkbox">Set up metrics collection</div>
+          <div class="todo"><input type="checkbox">Integrate with ELK stack</div>
+        </details>
+        <div class="tags"><span class="tag">Monitoring</span><span class="tag">Analytics</span><span class="tag">ELK</span></div>
+        <div class="arrow"></div>
+      </div>
+
+      <!-- 14. Security & Compliance -->
+      <div class="card" data-tags="security compliance hardening vulnerabilities patching">
+        <h3><span class="step">14</span> Security & Compliance</h3>
+        <details>
+          <summary>Securing the identity server itself</summary>
+          <ul>
+            <li>Security hardening guidelines</li>
+            <li>Vulnerability management</li>
+            <li>Patch management process</li>
+            <li>Compliance frameworks (SOC2, ISO27001)</li>
+            <li>Certificate management</li>
+          </ul>
+          <div class="todo"><input type="checkbox">Apply security hardening</div>
+          <div class="todo"><input type="checkbox">Establish patch management</div>
+          <div class="todo"><input type="checkbox">Implement certificate rotation</div>
+        </details>
+        <div class="tags"><span class="tag">Security</span><span class="tag">Compliance</span><span class="tag">Hardening</span></div>
+        <div class="arrow"></div>
+      </div>
+
+      <!-- 15. Advanced Topics & Extensibility -->
+      <div class="card" data-tags="extensibility custom connectors scripting events">
+        <h3><span class="step">15</span> Advanced Topics & Extensibility</h3>
+        <details>
+          <summary>Customization and advanced features</summary>
+          <ul>
+            <li>Custom authenticators</li>
+            <li>Identity server extensions</li>
+            <li>Event handlers</li>
+            <li>Script-based authentication</li>
+            <li>Custom claim handlers</li>
+          </ul>
+          <div class="todo"><input type="checkbox">Develop custom authenticator</div>
+          <div class="todo"><input type="checkbox">Create event handler</div>
+          <div class="todo"><input type="checkbox">Implement custom claims</div>
+        </details>
+        <div class="tags"><span class="tag">Extensibility</span><span class="tag">Custom</span><span class="tag">Scripting</span></div>
+      </div>
+    </section>
+
+    <p class="foot">Tip: use the search box to filter cards by keywords (e.g., "oauth", "saml", "docker"). Your checkmarks are saved locally.</p>
+  </div>
+
+  <script>
+    // Simple search filter
+    const search = document.getElementById('search');
+    const cards = [...document.querySelectorAll('.card')];
+    search.addEventListener('input', e => {
+      const q = e.target.value.toLowerCase().trim();
+      cards.forEach(c => {
+        const hay = (c.innerText + ' ' + (c.dataset.tags||'')).toLowerCase();
+        c.style.display = hay.includes(q) ? '' : 'none';
+      });
+    });
+
+    // Persist checkbox state to localStorage
+    const KEY = 'is70_roadmap_checks_v1';
+    function save(){
+      const all = [...document.querySelectorAll('.todo input[type="checkbox"]')].map(cb => cb.checked?1:0);
+      localStorage.setItem(KEY, JSON.stringify(all));
+    }
+    function load(){
+      const raw = localStorage.getItem(KEY);
+      if(!raw) return;
+      const arr = JSON.parse(raw);
+      const boxes = [...document.querySelectorAll('.todo input[type="checkbox"]')];
+      boxes.forEach((cb,i)=>{ if(typeof arr[i]!== 'undefined') cb.checked = !!arr[i]; });
+    }
+    document.addEventListener('change', e => {
+      if(e.target.matches('.todo input[type="checkbox")]')) save();
+    });
+    // Fix selector (typo-safe)
+    document.addEventListener('change', e => {
+      const el = e.target; if(el && el.closest('.todo') && el.type==='checkbox') save();
+    });
+    load();
+
+    // Shift+Click on card header to toggle all checkboxes within card
+    document.querySelectorAll('.card h3').forEach(h => {
+      h.addEventListener('click', e => {
+        if(!e.shiftKey) return; // only with Shift
+        const card = e.currentTarget.closest('.card');
+        const boxes = card.querySelectorAll('.todo input[type="checkbox"]');
+        const anyUnchecked = [...boxes].some(b=>!b.checked);
+        boxes.forEach(b=> b.checked = anyUnchecked);
+        save();
+      });
+      h.title = 'Shift+Click to check/uncheck all in this section';
+    });
+  </script>
+</body>
+</html>
