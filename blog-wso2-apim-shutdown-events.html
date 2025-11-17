@@ -221,7 +221,7 @@
             <div class="progress" id="progress"></div>
         </div>
         
-        <div class="infographic">
+        <div class="infographic" style="display:none">
             <div class="step" data-step="1">
                 <div class="step-number">1</div>
                 <h3 class="step-title">Shutdown Triggered</h3>
@@ -326,7 +326,7 @@
             const detailsTitle = document.getElementById('detailsTitle');
             const detailsContent = document.getElementById('detailsContent');
             
-            let currentStep = 0;
+            let currentStep = -1;
             const totalSteps = steps.length;
             
             // Step details data
