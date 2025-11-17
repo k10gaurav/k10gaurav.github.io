@@ -332,7 +332,7 @@
             // Step details data
             const stepDetails = {
                 1: {
-                    title: "Shutdown Triggered",
+                    title: "1. Shutdown Triggered",
                     content: "The shutdown process begins when a termination signal is received. This can happen through:<br><br>" +
                              "• <strong>Ctrl+C</strong> in the terminal where WSO2 server is running<br>" +
                              "• Execution of the <strong>stop script</strong> (wso2server.sh stop)<br>" +
@@ -340,7 +340,7 @@
                              "At this point, the JVM begins its shutdown sequence and calls registered shutdown hooks."
                 },
                 2: {
-                    title: "JVM Shutdown Hook",
+                    title: "2. JVM Shutdown Hook",
                     content: "The Java Virtual Machine executes the registered shutdown hook for CarbonServer:<br><br>" +
                              "• JVM calls the <strong>CarbonServer.shutdown()</strong> method<br>" +
                              "• This initiates the graceful shutdown process<br>" +
@@ -348,7 +348,7 @@
                              "This mechanism allows WSO2 API Manager to clean up resources before the JVM exits completely."
                 },
                 3: {
-                    title: "Notify Lifecycle Listeners",
+                    title: "3. Notify Lifecycle Listeners",
                     content: "All components that have registered lifecycle listeners are notified about the impending shutdown:<br><br>" +
                              "• <strong>LifecycleManager</strong> broadcasts shutdown events<br>" +
                              "• Components can perform pre-shutdown tasks<br>" +
@@ -356,7 +356,7 @@
                              "This ensures that all parts of the system are aware of the shutdown and can prepare accordingly."
                 },
                 4: {
-                    title: "Stop Transports",
+                    title: "4. Stop Transports",
                     content: "Network transports are shut down to prevent new incoming requests:<br><br>" +
                              "• <strong>HTTP/HTTPS</strong> listeners stop accepting new connections<br>" +
                              "• <strong>JMS</strong> message consumers are stopped<br>" +
@@ -364,7 +364,7 @@
                              "Existing connections are allowed to complete their current operations before being terminated."
                 },
                 5: {
-                    title: "Handle Active Requests",
+                    title: "5. Handle Active Requests",
                     content: "Active requests in progress are given time to complete:<br><br>" +
                              "• A <strong>grace period</strong> is provided for in-flight requests<br>" +
                              "• Request timeouts are respected<br>" +
@@ -372,7 +372,7 @@
                              "This prevents data corruption and ensures that clients receive proper responses for their requests."
                 },
                 6: {
-                    title: "Shutdown Axis2 Engine",
+                    title: "6. Shutdown Axis2 Engine",
                     content: "The Axis2 engine, which handles SOAP and other web services, is shut down:<br><br>" +
                              "• Axis2 <strong>ConfigurationContext</strong> is cleaned up<br>" +
                              "• Service groups and services are properly undeployed<br>" +
@@ -380,7 +380,7 @@
                              "This ensures that all web service processing is gracefully terminated."
                 },
                 7: {
-                    title: "Stop Synapse",
+                    title: "7. Stop Synapse",
                     content: "The Synapse mediation engine, which processes APIs and sequences, is stopped:<br><br>" +
                              "• All <strong>APIs</strong> and <strong>proxy services</strong> are undeployed<br>" +
                              "• <strong>Sequences</strong> and <strong>endpoints</strong> are cleaned up<br>" +
@@ -388,7 +388,7 @@
                              "This step ensures that all API Gateway processing is properly shut down."
                 },
                 8: {
-                    title: "Close DB/Registry Connections",
+                    title: "8. Close DB/Registry Connections",
                     content: "Database and registry connections are properly closed:<br><br>" +
                              "• <strong>Database connections</strong> from connection pools are released<br>" +
                              "• <strong>Registry</strong> connections and sessions are closed<br>" +
@@ -396,7 +396,7 @@
                              "This prevents resource leaks and ensures data integrity in the registry and databases."
                 },
                 9: {
-                    title: "Shutdown OSGi Bundles",
+                    title: "9. Shutdown OSGi Bundles",
                     content: "All OSGi bundles are stopped in the correct dependency order:<br><br>" +
                              "• Bundles are stopped in <strong>reverse dependency order</strong><br>" +
                              "• <strong>Carbon kernel</strong> bundles are stopped last<br>" +
@@ -404,7 +404,7 @@
                              "This orderly shutdown prevents issues when restarting the server."
                 },
                 10: {
-                    title: "Shutdown Complete",
+                    title: "10. Shutdown Complete",
                     content: "The WSO2 API Manager shutdown process is complete:<br><br>" +
                              "• All resources have been released<br>" +
                              "• The JVM can now exit safely<br>" +
