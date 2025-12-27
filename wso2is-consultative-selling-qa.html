@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Consultative Selling – WSO2 IAM (Scenarios)</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f9;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #1f3a5f;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .accordion {
+      background: #ffffff;
+      margin-bottom: 16px;
+      border-radius: 6px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+      overflow: hidden;
+    }
+
+    .question {
+      padding: 18px;
+      background: #1f3a5f;
+      color: #ffffff;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .question:hover {
+      background: #274c77;
+    }
+
+    .scenario-title {
+      font-size: 20px;
+      margin-bottom: 6px;
+    }
+
+    .category {
+      font-size: 14px;
+      color: #cfd8e3;
+      margin-bottom: 6px;
+    }
+
+    .question-text {
+      font-size: 14px;
+      font-weight: normal;
+      line-height: 1.5;
+    }
+
+    .answer {
+      display: none;
+      padding: 20px;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    .answer h4 {
+      color: #1f3a5f;
+      margin-bottom: 6px;
+      margin-top: 14px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Consultative Selling – WSO2 IAM (Scenario-Based Q&A)</h1>
+
+<div class="container">
+
+<!-- Scenario 1 -->
+<div class="accordion">
+  <div class="question" onclick="toggle(this)">
+    <div>
+      <div class="scenario-title">Scenario 1</div>
+      <div class="category">Category: Discovery & Compliance</div>
+      <div class="question-text">
+        A bank says:<br>
+        “We want to implement WSO2 Identity Server because our regulator is asking for stronger authentication.”<br><br>
+        What is the best consultative response to move the conversation forward?
+      </div>
+    </div>
+    <span>+</span>
+  </div>
+  <div class="answer">
+    <h4>Consultative Response</h4>
+    “Can you help me understand which specific regulatory controls are being highlighted—strong customer authentication, auditability, identity lifecycle, or fraud prevention? Also, what risks has the regulator pointed out if these gaps remain?”
+
+    <h4>Why</h4>
+    This reframes the conversation around regulatory outcomes and risk mitigation instead of jumping straight to a product decision.
+  </div>
+</div>
+
+<!-- Scenario 2 -->
+<div class="accordion">
+  <div class="question" onclick="toggle(this)">
+    <div>
+      <div class="scenario-title">Scenario 2</div>
+      <div class="category">Category: Problem Discovery</div>
+      <div class="question-text">
+        A healthcare provider says:<br>
+        “Our users face too many login issues.”<br><br>
+        What is the most consultative way to determine whether IAM is the real problem?
+      </div>
+    </div>
+    <span>+</span>
+  </div>
+  <div class="answer">
+    <h4>Consultative Response</h4>
+    “Do these issues occur during authentication, MFA validation, or application authorization? And are they impacting patients, clinicians, or third-party partners?”
+
+    <h4>Why</h4>
+    This helps isolate IAM issues from application or infrastructure problems and ties the impact to patient care.
+  </div>
+</div>
+
+<!-- Scenario 3 -->
+<div class="accordion">
+  <div class="question" onclick="toggle(this)">
+    <div>
+      <div class="scenario-title">Scenario 3</div>
+      <div class="category">Category: Identity Scope</div>
+      <div class="question-text">
+        A retail enterprise says:<br>
+        “We want SSO across all our applications.”<br><br>
+        What should a consultative seller explore before proposing a solution?
+      </div>
+    </div>
+    <span>+</span>
+  </div>
+  <div class="answer">
+    <h4>Consultative Response</h4>
+    “Which applications are involved, and do they span on-prem, cloud, and partner ecosystems? How are identities provisioned and deprovisioned today?”
+
+    <h4>Why</h4>
+    SSO without lifecycle governance can introduce security and operational risks.
+  </div>
+</div>
+
+<!-- Scenario 4 -->
+<div class="accordion">
+  <div class="question" onclick="toggle(this)">
+    <div>
+      <div class="scenario-title">Scenario 4</div>
+      <div class="category">Category: Assumption Validation</div>
+      <div class="question-text">
+        A government agency insists on deploying IAM on-prem for security reasons.<br><br>
+        What consultative response helps validate this requirement?
+      </div>
+    </div>
+    <span>+</span>
+  </div>
+  <div class="answer">
+    <h4>Consultative Response</h4>
+    “Is this requirement driven by formal policy or data residency regulations, or is it based on perceived risk? Are any workloads already hybrid?”
+
+    <h4>Why</h4>
+    This separates real constraints from assumptions that may limit architectural flexibility.
+  </div>
+</div>
+
+<!-- Scenario 5 -->
+<div class="accordion">
+  <div class="question" onclick="toggle(this)">
+    <div>
+      <div class="scenario-title">Scenario 5</div>
+      <div class="category">Category: Business Impact</div>
+      <div class="question-text">
+        A customer says:<br>
+        “Onboarding new applications into IAM takes months.”<br><br>
+        What should be explored next?
+      </div>
+    </div>
+    <span>+</span>
+  </div>
+  <div class="answer">
+    <h4>Consultative Response</h4>
+    “What business impact does this delay create—missed launches, security exceptions, or increased operational overhead?”
+
+    <h4>Why</h4>
+    Business impact clarifies urgency and justifies IAM modernization.
+  </div>
+</div>
+
+<!-- Scenario 6 -->
+<div class="accordion">
+  <div class="question" onclick="toggle(this)">
+    <div>
+      <div class="scenario-title">Scenario 6</div>
+      <div class="category">Category: Scalability Diagnosis</div>
+      <div class="question-text">
+        A fintech company experiences authentication failures during peak hours.<br><br>
+        What should be diagnosed before recommending IAM scaling?
+      </div>
+    </div>
+    <span>+</span>
+  </div>
+  <div class="answer">
+    <h4>Consultative Response</h4>
+    “Let’s review authentication flows, MFA dependencies, token lifetimes, and concurrency behavior during peak traffic.”
+
+    <h4>Why</h4>
+    Many peak-time failures are caused by design inefficiencies rather than lack of capacity.
+  </div>
+</div>
+
+<!-- Scenario 7 -->
+<div class="accordion">
+  <div class="question" onclick="toggle(this)">
+    <div>
+      <div class="scenario-title">Scenario 7</div>
+      <div class="category">Category: Developer Experience</div>
+      <div class="question-text">
+        Developers bypass centralized IAM and implement authentication directly in applications.<br><br>
+        How should this be interpreted consultatively?
+      </div>
+    </div>
+    <span>+</span>
+  </div>
+  <div class="answer">
+    <h4>Consultative Response</h4>
+    “What challenges do developers face with the current IAM—complex integrations, slow changes, or lack of guidance?”
+
+    <h4>Why</h4>
+    This reframes the issue as an adoption and usability problem, not a governance failure.
+  </div>
+</div>
+
+<!-- Scenario 8 -->
+<div class="accordion">
+  <div class="question" onclick="toggle(this)">
+    <div>
+      <div class="scenario-title">Scenario 8</div>
+      <div class="category">Category: User Experience</div>
+      <div class="question-text">
+        A customer complains about poor login experience.<br><br>
+        What should be analyzed before proposing changes?
+      </div>
+    </div>
+    <span>+</span>
+  </div>
+  <div class="answer">
+    <h4>Consultative Response</h4>
+    “Where do users drop off—during MFA, consent, or federation? Do we have metrics on success rate and login time?”
+
+    <h4>Why</h4>
+    UX issues must be validated using measurable authentication data.
+  </div>
+</div>
+
+<!-- Scenario 9 -->
+<div class="accordion">
+  <div class="question" onclick="toggle(this)">
+    <div>
+      <div class="scenario-title">Scenario 9</div>
+      <div class="category">Category: Change Motivation</div>
+      <div class="question-text">
+        A customer wants to replace their legacy IAM but cannot clearly explain why.<br><br>
+        What consultative question helps uncover the real driver?
+      </div>
+    </div>
+    <span>+</span>
+  </div>
+  <div class="answer">
+    <h4>Consultative Response</h4>
+    “If the current IAM remains for the next three years, what concerns you most—compliance, scalability, security, or operational cost?”
+
+    <h4>Why</h4>
+    This reveals the true motivation behind the change.
+  </div>
+</div>
+
+<!-- Scenario 10 -->
+<div class="accordion">
+  <div class="question" onclick="toggle(this)">
+    <div>
+      <div class="scenario-title">Scenario 10</div>
+      <div class="category">Category: Architecture Flexibility</div>
+      <div class="question-text">
+        IAM changes frequently require production downtime.<br><br>
+        What should be explored consultatively?
+      </div>
+    </div>
+    <span>+</span>
+  </div>
+  <div class="answer">
+    <h4>Consultative Response</h4>
+    “Which changes cause downtime—policies, authentication logic, or integrations—and how often do these changes occur?”
+
+    <h4>Why</h4>
+    This links business pain to architectural limitations.
+  </div>
+</div>
+
+<!-- Scenario 11 -->
+<div class="accordion">
+  <div class="question" onclick="toggle(this)">
+    <div>
+      <div class="scenario-title">Scenario 11</div>
+      <div class="category">Category: Solution Framing</div>
+      <div class="question-text">
+        A bank needs strong customer authentication, regulatory compliance, and minimal login friction.<br><br>
+        How should WSO2 IAM be positioned consultatively?
+      </div>
+    </div>
+    <span>+</span>
+  </div>
+  <div class="answer">
+    <h4>Consultative Response</h4>
+    “We should design authentication that adapts to user risk—strong when required, seamless when possible, and fully auditable.”
+
+    <h4>Why</h4>
+    This focuses on outcomes instead of features.
+  </div>
+</div>
+
+<!-- Scenario 12 -->
+<div class="accordion">
+  <div class="question" onclick="toggle(this)">
+    <div>
+      <div class="scenario-title">Scenario 12</div>
+      <div class="category">Category: Multi-Tenancy</div>
+      <div class="question-text">
+        A B2B SaaS provider needs fast onboarding of enterprise customers with tenant isolation.<br><br>
+        What should guide the consultative discussion?
+      </div>
+    </div>
+    <span>+</span>
+  </div>
+  <div class="answer">
+    <h4>Consultative Response</h4>
+    “How important are tenant isolation, branding, and delegated administration to your customers, and how fast must onboarding happen?”
+
+    <h4>Why</h4>
+    IAM directly impacts revenue onboarding velocity.
+  </div>
+</div>
+
+<!-- Scenario 13 -->
+<div class="accordion">
+  <div class="question" onclick="toggle(this)">
+    <div>
+      <div class="scenario-title">Scenario 13</div>
+      <div class="category">Category: Objection Handling</div>
+      <div class="question-text">
+        A customer asks:<br>
+        “Can WSO2 IAM replace our custom OAuth implementation?”<br><br>
+        What is the correct consultative approach?
+      </div>
+    </div>
+    <span>+</span>
+  </div>
+  <div class="answer">
+    <h4>Consultative Response</h4>
+    “Let’s understand why OAuth was built in-house—flexibility, performance, or constraints at that time—before deciding.”
+
+    <h4>Why</h4>
+    This respects past decisions and avoids defensive selling.
+  </div>
+</div>
+
+<!-- Scenario 14 -->
+<div class="accordion">
+  <div class="question" onclick="toggle(this)">
+    <div>
+      <div class="scenario-title">Scenario 14</div>
+      <div class="category">Category: Future Readiness</div>
+      <div class="question-text">
+        IAM is required only for employees today, but B2C use cases are planned later.<br><br>
+        How should this influence the recommendation?
+      </div>
+    </div>
+    <span>+</span>
+  </div>
+  <div class="answer">
+    <h4>Consultative Response</h4>
+    “We should ensure today’s design doesn’t limit future scale, external identities, or federation needs.”
+
+    <h4>Why</h4>
+    This avoids re-architecture later.
+  </div>
+</div>
+
+<!-- Scenario 15 -->
+<div class="accordion">
+  <div class="question" onclick="toggle(this)">
+    <div>
+      <div class="scenario-title">Scenario 15</div>
+      <div class="category">Category: Cost Justification</div>
+      <div class="question-text">
+        A customer is concerned about IAM license cost.<br><br>
+        What value-based discussion should be initiated?
+      </div>
+    </div>
+    <span>+</span>
+  </div>
+  <div class="answer">
+    <h4>Consultative Response</h4>
+    “How much effort is spent today on identity-related support, audits, incident response, and custom development?”
+
+    <h4>Why</h4>
+    This reframes cost as total cost of ownership.
+  </div>
+</div>
+
+<!-- Scenario 16 -->
+<div class="accordion">
+  <div class="question" onclick="toggle(this)">
+    <div>
+      <div class="scenario-title">Scenario 16</div>
+      <div class="category">Category: Build vs Buy</div>
+      <div class="question-text">
+        A customer says:<br>
+        “We can build IAM ourselves.”<br><br>
+        What is the most consultative response?
+      </div>
+    </div>
+    <span>+</span>
+  </div>
+  <div class="answer">
+    <h4>Consultative Response</h4>
+    “You can—so the key question is whether identity is a differentiator or a shared capability best standardized.”
+
+    <h4>Why</h4>
+    This highlights opportunity cost without confrontation.
+  </div>
+</div>
+
+<!-- Scenario 17 -->
+<div class="accordion">
+  <div class="question" onclick="toggle(this)">
+    <div>
+      <div class="scenario-title">Scenario 17</div>
+      <div class="category">Category: Stakeholder Alignment</div>
+      <div class="question-text">
+        Security teams want strict authentication while business teams want frictionless access.<br><br>
+        How should IAM be positioned?
+      </div>
+    </div>
+    <span>+</span>
+  </div>
+  <div class="answer">
+    <h4>Consultative Response</h4>
+    “We can use risk-based authentication so controls adapt to context rather than applying blanket rules.”
+
+    <h4>Why</h4>
+    IAM becomes a balancing mechanism, not a blocker.
+  </div>
+</div>
+
+<!-- Scenario 18 -->
+<div class="accordion">
+  <div class="question" onclick="toggle(this)">
+    <div>
+      <div class="scenario-title">Scenario 18</div>
+      <div class="category">Category: PoC Risk</div>
+      <div class="question-text">
+        A customer wants a quick PoC but avoids discovery workshops.<br><br>
+        What risk does this pose?
+      </div>
+    </div>
+    <span>+</span>
+  </div>
+  <div class="answer">
+    <h4>Consultative Response</h4>
+    “A PoC may prove technology works but miss the real business problem, leading to rework later.”
+
+    <h4>Why</h4>
+    Discovery ensures relevance, not just functionality.
+  </div>
+</div>
+
+<!-- Scenario 19 -->
+<div class="accordion">
+  <div class="question" onclick="toggle(this)">
+    <div>
+      <div class="scenario-title">Scenario 19</div>
+      <div class="category">Category: Technical Debt</div>
+      <div class="question-text">
+        Post go-live, the customer requests frequent IAM customizations.<br><br>
+        What consultative guidance should be given?
+      </div>
+    </div>
+    <span>+</span>
+  </div>
+  <div class="answer">
+    <h4>Consultative Response</h4>
+    “Before customizing, let’s explore configuration, policy modeling, or process changes.”
+
+    <h4>Why</h4>
+    This avoids long-term maintenance burden.
+  </div>
+</div>
+
+<!-- Scenario 20 -->
+<div class="accordion">
+  <div class="question" onclick="toggle(this)">
+    <div>
+      <div class="scenario-title">Scenario 20</div>
+      <div class="category">Category: Adoption & Change Management</div>
+      <div class="question-text">
+        WSO2 IAM is successfully deployed, but adoption is low.<br><br>
+        What should be addressed next?
+      </div>
+    </div>
+    <span>+</span>
+  </div>
+  <div class="answer">
+    <h4>Consultative Response</h4>
+    “Is adoption impacted by user experience, awareness, missing integrations, or process resistance?”
+
+    <h4>Why</h4>
+    IAM success depends on people and process, not just technology.
+  </div>
+</div>
+
+</div>
+
+<script>
+function toggle(el) {
+  const answer = el.nextElementSibling;
+  const icon = el.querySelector("span");
+  if (answer.style.display === "block") {
+    answer.style.display = "none";
+    icon.textContent = "+";
+  } else {
+    answer.style.display = "block";
+    icon.textContent = "−";
+  }
+}
+</script>
+
+</body>
+</html>
